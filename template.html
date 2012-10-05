@@ -9,7 +9,7 @@ URL: https://code.google.com/p/io-2012-slides
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Google IO 2012</title>
+  <title>Beyond Mylyn, leverage the data of your IDE</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
@@ -27,13 +27,18 @@ URL: https://code.google.com/p/io-2012-slides
 <slides class="layout-widescreen">
 
   <slide class="logoslide nobackground">
+    <aside class="note">
+      <section>
+        <p>Welcome everyone to this talk, today I will present you my work on Ariadne, a tool to help you monitor your projects</p>
+      </section>
+    </aside>
     <article class="flexbox vcenter">
-      <span><img src="images/google_developers_logo.png"></span>
+      <span><img src="images/product_logo_wide.png"></span>
     </article>
   </slide>
 
   <slide class="title-slide segue nobackground">
-    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <aside class="gdbar"><img src="images/product_logo_128.png"></aside>
     <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
     <hgroup class="auto-fadein">
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
@@ -42,57 +47,154 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
   </slide>
 
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/product_logo_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>What is Ariadne?</h2>
+      <h3>an answer...</h3>
+    </hgroup>
+  </slide>
+  
   <slide>
     <hgroup>
-      <h2>Slide with Bullets</h2>
+      <h2>Origin of the problem</h2>
     </hgroup>
     <article>
+	  <p>Back in EclipseCon US 2012</p>
       <ul>
-        <li>Titles are formatted as Open Sans with bold applied and font size is set at 45</li>
-        <li>Title capitalization is title case
+        <li>Wayne Beaton's work on projects.eclipse.org
+		  <ul>
+            <li>Wayne highlighted the need for more tooling for project management</li>
+          </ul>
+		</li>
+        <li>OMG Workshop
           <ul>
-            <li>Subtitle capitalization is title case</li>
+            <li>The Eclipse community is opaque for outsiders, so is the OMG community</li>
           </ul>
         </li>
-        <li>Subtitle capitalization is title case</li>
-        <li>Titles and subtitles should never have a period at the end</li>
       </ul>
+	  <p>For the release review of Eclipse 4.2 Juno, I've started to ask myself some simple questions</p>
+	  <p>The further I looked for answers, the more questions I had...</p>
     </article>
   </slide>
-
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar right bottom"><img src="images/product_logo_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>If Ariadne is an answer</h2>
+      <h3>then what are the questions?</h3>
+    </hgroup>
+  </slide>
+  
   <slide>
     <hgroup>
-      <h2>Slide with Bullets that Build</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>Questions</h2>
     </hgroup>
     <article>
-      <p>A list where items build:</p>
       <ul class="build">
-        <li>Pressing 'h' highlights code snippets</li>
-        <li>Pressing 'p' toggles speaker notes (if they're on the current slide)</li>
-        <li>Pressing 'f' toggles fullscreen viewing</li>
-        <li>Pressing 'w' toggles widescreen</li>
-        <li>Pressing 'o' toggles overview mode</li>
-        <li>Pressing 'ESC' toggles off these goodies</li>
+        <li>What are the APIs of the Eclipse release train?
+		  <ul>
+            <li>Too complicated? ok, what about the new APIs of the latest release</li>
+          </ul>
+		</li>
+		<li>Which APIs are not tested?</li>
+		<li>Which features are impacted by my work?</li>
+        <li>What is the license of my project?</li>
+		<li>What are the dependencies used while building the release train?
+		  <ul>
+            <li>Are there any problems with them? conflicts? incompatibilities?</li>
+          </ul>
+		</li>
+		<li>Which features are the most bugged?</li>
       </ul>
-      <p>Another list, but items fade as they build:</p>
-      <ul class="build fade">
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>All these questions have some common points</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>You have to ask 10 persons to have 11 answers</li>
+		<li>We have a pretty good idea of the answer
+		  <ul>
+            <li>We are not scared since we have a "good enough" answer</li>
+          </ul>
+		</li>
+		<li>Looking for the correct answer is long and boring
+		  <ul>
+            <li>It often involves navigating in countless of technical artifacts</li>
+          </ul>
+		</li>
+		<li>We know where the answer is
+		  <ul>
+            <li>Even better, we feel that the answer is just a couple click away</li>
+          </ul>
+		</li>
+      </ul>
+    </article>
+  </slide>
+  
+  <slide class="seguewhite">
+    <hgroup class="auto-fadein">
+      <h2>Where is the answer?</h2>
+    </hgroup>
+  </slide>
+  
+  <slide class="fill nobackground" style="background-image: url(images/answer.png)">
+    <hgroup>
+    </hgroup>
+  </slide>
+  
+  <slide class="mazeslide darkbackground nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/maze.png"></span>
+    </article>
+  </slide>
+  
+  <slide class="seguewhite">
+    <hgroup class="auto-fadein">
+      <h2>How to solve this problem?</h2>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Document all the things!</h2>
+    </hgroup>
+    <article>
+	  <p>The documentation is nice but it won't be enough</p>
+      <ul class="build">
+        <li>It will be very long to do it</li>
+        <li>It lacks synchronization with the documented artifacts</li>
+        <li>It cannot be easily manipulated by other tools</li>
+        <li>It's error prone</li>
+		<li>It's boring!</li>
       </ul>
     </article>
   </slide>
 
+  <slide class="segue dark nobackground">
+    <aside class="gdbar right bottom"><img src="images/product_logo_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>We need something stronger</h2>
+      <h3>but first, what is a project?</h3>
+    </hgroup>
+  </slide>
+  
+  <slide class="fill nobackground" style="background-image: url(images/acceleo_m.png)">
+    <hgroup>
+    </hgroup>
+  </slide>
+
   <slide>
     <hgroup>
-      <h2>Slide with (Smaller Font)</h2>
+      <h2>Architecture of Ariadne</h2>
     </hgroup>
     <article class="smaller">
-      <ul>
-        <li>All <a href="http://google.com">links</a> open in new tabs.</li>
-        <li>To change that this, add <code>target="_self"</code> to the link.</li>
-      </ul>
+      <img src="images/barchart.png" alt="Description" title="Description">
+      <footer class="source">source: place source info here</footer>
     </article>
   </slide>
 
@@ -102,115 +204,10 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>Code Slide (with Subtitle Placeholder)</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <p>Press 'h' to highlight important sections of code (wrapped in <code>&lt;b&gt;</code>).</p>
-      <pre class="prettyprint" data-lang="javascript">
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    <b>for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }</b>
-  }
-&lt;/script&gt;
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Code Slide (Smaller Font)</h2>
-    </hgroup>
-    <article class="smaller">
-      <pre class="prettyprint" data-lang="javascript">
-// Say hello world until the user starts questioning
-// the meaningfulness of their existence.
-function helloWorld(world) {
-  for (var i = 42; --i &gt;= 0;) {
-    alert('Hello ' + String(world));
-  }
-}
-</pre>
-<pre class="prettyprint" data-lang="css">
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-&lt;/style&gt;
-</pre>
-<pre class="prettyprint" data-lang="html">
-&lt;!DOCTYPE html>
-&lt;html>
-&lt;head>
-  &lt;title>My Awesome Page&lt;/title>
-&lt;/head>
-&lt;body>
-  &lt;p&gt;Hello world&lt;/p&gt;
-&lt;body>
-&lt;/html>
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>Point I wanted to make #1</li>
-          <li>Point I wanted to make #2</li>
-          <li>Point I wanted to make #3</li>
-          <li>Example <a href="#">link</a> in notes.</li>
-        </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>Slide with Speaker Notes</h2>
-    </hgroup>
-    <article>
-      <p>Press 'p' to toggle speaker notes.</p>
-    </article>
-  </slide>
-
-  <slide>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>See this amazing link: <a href="http://www.google.com">link</a>.</li>
-        </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>Presenter Mode</h2>
-    </hgroup>
-    <article>
-      <p>Add <code><a href="?presentme=true" target="_self">?presentme=true</a></code> to the URL to enabled presenter mode.
-      This setting is sticky, meaning refreshing the page will persist presenter
-      mode.</p>
-      <p>Hit <code><a href="?presentme=false" target="_self">?presentme=false</a></code> to disable presenter mode.</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
       <h2>Slide with Image</h2>
     </hgroup>
     <article>
       <img src="images/chart.png" class="reflect" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Image (Centered horz/vert)</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="images/barchart.png" alt="Description" title="Description">
       <footer class="source">source: place source info here</footer>
     </article>
   </slide>
@@ -333,7 +330,7 @@ function helloWorld(world) {
   </slide>
 
   <slide class="segue dark nobackground">
-    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <aside class="gdbar"><img src="images/product_logo_128.png"></aside>
     <hgroup class="auto-fadein">
       <h2>Segue Slide</h2>
       <h3>Subtitle Placeholder</h3>
@@ -348,7 +345,7 @@ function helloWorld(world) {
   </slide>
 
   <slide class="segue dark quote nobackground">
-    <aside class="gdbar right bottom"><img src="images/google_developers_icon_128.png"></aside>
+    <aside class="gdbar right bottom"><img src="images/product_logo_128.png"></aside>
     <article class="flexbox vleft auto-fadein">
       <q>
         This is an example of quote text.
@@ -376,19 +373,19 @@ function helloWorld(world) {
   </slide>
 
   <slide class="thank-you-slide segue nobackground">
-    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <aside class="gdbar right"><img src="images/product_logo_128.png"></aside>
     <article class="flexbox vleft auto-fadein">
       <h2>&lt;Thank You!&gt;</h2>
-      <p>Important contact information goes here.</p>
+      <p></p>
     </article>
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
     </p>
   </slide>
 
-  <slide class="logoslide dark nobackground">
+  <slide class="logoslide darkbackground nobackground">
     <article class="flexbox vcenter">
-      <span><img src="images/google_developers_logo_white.png"></span>
+      <span><img src="images/product_logo_wide_white.png"></span>
     </article>
   </slide>
 

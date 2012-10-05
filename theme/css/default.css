@@ -228,7 +228,8 @@ slide.fill img {
 
 /* line 94, ../scss/default.scss */
 body {
-  background: black;
+  background: url(../../images/dark_background.png);
+  /*background: black;*/
 }
 
 /* line 98, ../scss/default.scss */
@@ -291,15 +292,20 @@ slides > slide.far-next {
 /* line 163, ../scss/default.scss */
 slides > slide.dark {
   background: #515151 !important;
+  background: url(../../images/dark_background.png);
 }
+slides > slide.darkbackground {
+  background: url(../../images/dark_background.png);
+}
+
 /* line 171, ../scss/default.scss */
 slides > slide:not(.nobackground):before {
   font-size: 12pt;
-  content: "#io12";
+  content: "#EclipseCon";
   position: absolute;
   bottom: 20px;
   left: 60px;
-  background: url(../../images/google_developers_icon_128.png) no-repeat 0 50%;
+  background: url(../../images/product_logo_128.png) no-repeat 0 50%;
   -webkit-background-size: 30px 30px;
   -moz-background-size: 30px 30px;
   -o-background-size: 30px 30px;
@@ -320,7 +326,7 @@ slides > slide:not(.nobackground):after {
 /* line 194, ../scss/default.scss */
 slides > slide.title-slide:after {
   content: '';
-  background: url(../../images/io2012_logo.png) no-repeat 100% 50%;
+  background: url(../../images/convention-logo.jpg) no-repeat 100% 50%;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -329,7 +335,7 @@ slides > slide.title-slide:after {
   bottom: 40px;
   right: 40px;
   width: 100%;
-  height: 60px;
+  height: 80px;
 }
 /* line 206, ../scss/default.scss */
 slides > slide.backdrop {
@@ -1217,10 +1223,15 @@ article.smaller q:before, article.smaller q:after {
 }
 
 /* ===== SLIDE CONTENT ===== */
+.mazeslide img {
+  width: 600px;
+  height: 600px;
+}
+
 /* line 839, ../scss/default.scss */
 .logoslide img {
-  width: 383px;
-  height: 92px;
+  width: 700px;
+  height: 250px;
 }
 
 /* line 845, ../scss/default.scss */
@@ -1241,6 +1252,30 @@ article.smaller q:before, article.smaller q:after {
 .segue hgroup {
   position: absolute;
   bottom: 225px;
+}
+
+.seguewhite {
+  padding: 60px 120px;
+}
+
+.seguewhite h2 {
+  color: #302f32;
+  font-size: 60px;
+}
+
+.seguewhite h3 {
+  color: #302f32;
+  line-height: 2.8;
+}
+
+.seguewhite hgroup {
+  position: absolute;
+  bottom: 225px;
+}
+
+.seguewhite .hgrouptop {
+  position: absolute;
+  bottom: 500px;
 }
 
 /* line 862, ../scss/default.scss */
