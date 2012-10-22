@@ -26,17 +26,6 @@ URL: https://code.google.com/p/io-2012-slides
 
 <slides class="layout-widescreen">
 
-  <slide class="logoslide nobackground">
-    <aside class="note">
-      <section>
-        <p>Welcome everyone to this talk, today I will present you my work on Ariadne, a tool to help you monitor your projects</p>
-      </section>
-    </aside>
-    <article class="flexbox vcenter">
-      <span><img src="images/product_logo_wide.png"></span>
-    </article>
-  </slide>
-
   <slide class="title-slide segue nobackground">
     <aside class="gdbar"><img src="images/product_logo_128.png"></aside>
     <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
@@ -46,9 +35,14 @@ URL: https://code.google.com/p/io-2012-slides
       <p data-config-presenter><!-- populated from slide_config.json --></p>
     </hgroup>
   </slide>
+  
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/product_logo_wide.png"></span>
+    </article>
+  </slide>
 
   <slide class="segue dark nobackground">
-    <aside class="gdbar"><img src="images/product_logo_128.png"></aside>
     <hgroup class="auto-fadein">
       <h2>What is Ariadne?</h2>
       <h3>an answer...</h3>
@@ -64,7 +58,7 @@ URL: https://code.google.com/p/io-2012-slides
       <ul>
         <li>Wayne Beaton's work on projects.eclipse.org
 		  <ul>
-            <li>Wayne highlighted the need for more tooling for project management</li>
+            <li>Wayne previewed its tooling for metadata management</li>
           </ul>
 		</li>
         <li>OMG Workshop
@@ -73,8 +67,8 @@ URL: https://code.google.com/p/io-2012-slides
           </ul>
         </li>
       </ul>
-	  <p>For the release review of Eclipse 4.2 Juno, I've started to ask myself some simple questions</p>
-	  <p>The further I looked for answers, the more questions I had...</p>
+	  <p>For the release review of Eclipse 4.2 Juno, I've started to ask myself some simple questions about Eclipse and my projects.</p>
+	  <p>The more I looked for answers, the more questions I had...</p>
     </article>
   </slide>
   
@@ -82,7 +76,7 @@ URL: https://code.google.com/p/io-2012-slides
     <aside class="gdbar right bottom"><img src="images/product_logo_128.png"></aside>
     <hgroup class="auto-fadein">
       <h2>If Ariadne is an answer</h2>
-      <h3>then what are the questions?</h3>
+      <h3>then what are those questions?</h3>
     </hgroup>
   </slide>
   
@@ -95,17 +89,18 @@ URL: https://code.google.com/p/io-2012-slides
         <li>What are the APIs of the Eclipse release train?
 		  <ul>
             <li>Too complicated? ok, what about the new APIs of the latest release</li>
+			<li>Still too hard? what about one project?</li>
           </ul>
 		</li>
-		<li>Which APIs are not tested?</li>
-		<li>Which features are impacted by my work?</li>
-        <li>What is the license of my project?</li>
+		<li>Which APIs are tested? and which ones are not?</li>
 		<li>What are the dependencies used while building the release train?
 		  <ul>
             <li>Are there any problems with them? conflicts? incompatibilities?</li>
           </ul>
 		</li>
-		<li>Which features are the most bugged?</li>
+		<li>Which feature is the most stable?</li>
+		<li>Which feature is the most bugged?</li>
+		<li>Which features are impacted by a given change?</li>
       </ul>
     </article>
   </slide>
@@ -136,10 +131,11 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
   
-  <slide class="seguewhite">
+  <slide class="fill nobackground" style="background-image: url(images/beacon_of_light.jpg)">
     <hgroup class="auto-fadein">
-      <h2>Where is the answer?</h2>
+      <h2 class="white">Where is the answer?</h2>
     </hgroup>
+    <footer class="source white">St&eacute;phane B&eacute;gaudeau, 2012</footer>
   </slide>
   
   <slide class="fill nobackground" style="background-image: url(images/answer.png)">
@@ -153,10 +149,18 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
   
-  <slide class="seguewhite">
+  <slide class="fill nobackground" style="background-image: url(images/marine_one.jpg)">
     <hgroup class="auto-fadein">
-      <h2>How to solve this problem?</h2>
+      <h2 class="white">How to solve those problems?</h2>
     </hgroup>
+    <footer class="source white">St&eacute;phane B&eacute;gaudeau, 2012</footer>
+  </slide>
+  
+  <slide class="fill nobackground" style="background-image: url(images/documentation.jpg)">
+    <hgroup>
+      <h2 class="white">Document all the things!</h2>
+    </hgroup>
+    <footer class="source white">http://www.flickr.com/photos/ginnerobot/2569905695/</footer>
   </slide>
   
   <slide>
@@ -164,214 +168,267 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Document all the things!</h2>
     </hgroup>
     <article>
-	  <p>The documentation is nice but it won't be enough</p>
+	  <p>The documentation is important but it won't be enough</p>
       <ul class="build">
         <li>It will be very long to do it</li>
-        <li>It lacks synchronization with the documented artifacts</li>
+        <li>It lacks synchronization with the documented artifacts
+			<ul>
+				<li>By the time I'm done documenting my APIs they would have changed already</li>
+			</ul>
+		</li>
         <li>It cannot be easily manipulated by other tools</li>
         <li>It's error prone</li>
-		<li>It's boring!</li>
+		<li>The information is already available!</li>
+		<li>The documentation does not match our need, what we need is...</li>
       </ul>
     </article>
   </slide>
 
-  <slide class="segue dark nobackground">
-    <aside class="gdbar right bottom"><img src="images/product_logo_128.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>We need something stronger</h2>
-      <h3>but first, what is a project?</h3>
+  <slide class="fill nobackground" style="background-image: url(images/spartans.jpg)">
+    <hgroup>
+      <h2 class="white">Something stronger to analyze our projects</h2>
     </hgroup>
+    <footer class="source white">http://www.flickr.com/photos/legofenris/5011379066/</footer>
   </slide>
   
-  <slide class="fill nobackground" style="background-image: url(images/acceleo_m.png)">
+  <slide class="fill nobackground" style="background-image: url(images/project.jpg)">
     <hgroup>
+      <h2 class="white">But first, what is a project?</h2>
     </hgroup>
+    <footer class="source white">http://www.flickr.com/photos/nyuhuhuu/4653088356/</footer>
+  </slide>
+  
+  <slide class="fill nobackground" style="background-image: url(images/acceleo.png)">
+    <hgroup>
+      <h2 class="black"></h2>
+    </hgroup>
+    <footer class="source white">http://www.flickr.com/photos/nyuhuhuu/4653088356/</footer>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Architecture of Ariadne</h2>
+	  <h3>Relationships between the structures</h3>
+    </hgroup>
+    <article class="smaller">
+      <img src="images/architecture_structure.png" alt="Architecture of Ariadne" title="Architecture of Ariadne">
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Architecture of Ariadne</h2>
+	  <h3>Structures (core and source code)</h3>
+    </hgroup>
+    <article class="smaller">
+      <img src="images/architecture_core_code.png" alt="Architecture of Ariadne" title="Architecture of Ariadne">
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Architecture of Ariadne</h2>
+	  <h3>Structures (source code)</h3>
+    </hgroup>
+    <article class="smaller">
+      <img src="images/architecture_code.png" alt="Architecture of Ariadne" title="Architecture of Ariadne">
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Architecture of Ariadne</h2>
+	  <h3>Structures (continuous integration, scm, tasks and organization)</h3>
+    </hgroup>
+    <article class="smaller">
+      <img src="images/architecture_misc.png" alt="Architecture of Ariadne" title="Architecture of Ariadne">
+    </article>
   </slide>
 
   <slide>
     <hgroup>
       <h2>Architecture of Ariadne</h2>
+	  <h3>Relationships between the connectors</h3>
     </hgroup>
     <article class="smaller">
-      <img src="images/barchart.png" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
+      <img src="images/architecture_connector.png" class="reflect" alt="Architecture of Ariadne" title="Architecture of Ariadne">
     </article>
   </slide>
-
-  <slide hidden>
-    Hidden slides are left out of the presentation.
-  </slide>
-
+  
   <slide>
     <hgroup>
-      <h2>Slide with Image</h2>
-    </hgroup>
-    <article>
-      <img src="images/chart.png" class="reflect" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option A</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option A (Smaller Text)</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>Computed automatically, improved manually</h2>
     </hgroup>
     <article class="smaller">
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
+      <img src="images/computation.png" class="reflect" alt="Architecture of Ariadne" title="Architecture of Ariadne">
     </article>
   </slide>
-
+  
   <slide>
     <hgroup>
-      <h2>Table Option B</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>Java</h2>
     </hgroup>
     <article>
-      <table class="rows">
-        <tr>
-          <th>Header 1</th><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 2</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 3</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 4</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 5</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
+	  <p>Per project analysis</p>
+      <ul class="build">
+        <li>All the source code</li>
+		<li>All additional files (icons, licenses, build, artifacts)</li>
+		<li>Dependencies with other projects</li>
+		<li>Dependencies within the source code
+		  <ul>
+		    <li>Build the graph of dependencies of the code</li>
+		  </ul>
+		</li>
+		<li>Properties of the code (deprecated, "@generated", "test", etc)</li>
+      </ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Plugin Development Environment</h2>
+    </hgroup>
+    <article>
+	  <p>Per project analysis</p>
+      <ul class="build">
+        <li>Reuse the Java connector for source code analysis</li>
+		<li>Additional dependencies (MANIFEST.MF, feature.xml)</li>
+		<li>Mapping of the runtime environment (MANIFEST.MF and Target Platform)</li>
+		<li>Mapping of the development environment (Tools installed in Eclipse)</li>
+		<li>Properties of the code (deprecated, "@generated", "test", etc)</li>
+      </ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Mylyn Build</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>Analysis of the build server synchronized</li>
+		<li>All the jobs building the projects selected</li>
+      </ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+	  <h2>Mylyn Tasks</h2>
+    </hgroup>
+    <article>
+	  <p>Per project analysis</p>
+      <ul class="build">
+        <li>Mapping of all the tasks linked to the project</li>
+      </ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+	  <h2>EGit and JGit</h2>
+    </hgroup>
+    <article>
+	  <p>Per project analysis</p>
+      <ul class="build">
+        <li>Analysis of the whole repository</li>
+		<li>All the branches</li>
+		<li>All the tags</li>
+		<li>All the commits
+		  <ul>
+		    <li>Linked with the code thanks to the Platform Team APIs</li>
+		  </ul>
+		</li>
+      </ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+	  <h2>Exploiting the data computed</h2>
+    </hgroup>
+    <article>
+		<img src="images/chart.png" class="reflect" alt="Features" title="Features">
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide Styles</h2>
+	  <h2>Exploiting the data computed</h2>
+    </hgroup>
+    <article>
+		<img src="images/chart.png" class="reflect" alt="Features" title="Features">
+    </article>
+  </slide>
+  
+  <slide class="segue fill nobackground" style="background-image: url(images/blackbird.png)">
+    <hgroup>
+      <h2 class="white">A force multiplier</h2>
+    </hgroup>
+    <footer class="source white"></footer>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Mylyn Intent</h2>
+    </hgroup>
+    <article>
+      <img src="images/intent_1.png" class="reflect" alt="Features" title="Features">
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Mylyn Intent</h2>
+    </hgroup>
+    <article>
+      <img src="images/intent_2.png" class="reflect" alt="Features" title="Features">
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Open source</h2>
     </hgroup>
     <article class="smaller">
-      <div class="columns-2">
-        <ul>
-          <li class="red">class="red"</li>
-          <li class="red2">class="red2"</li>
-          <li class="red3">class="red3"</li>
-          <li class="blue">class="blue"</li>
-          <li class="blue2">class="blue2"</li>
-          <li class="blue3">class="blue3"</li>
-          <li class="green">class="green"</li>
-          <li class="green2">class="green2"</li>
-        </ul>
-        <ul>
-          <li class="green3">class="green3"</li>
-          <li class="yellow">class="yellow"</li>
-          <li class="yellow2">class="yellow2"</li>
-          <li class="yellow3">class="yellow3"</li>
-          <li class="gray">class="gray"</li>
-          <li class="gray2">class="gray2"</li>
-          <li class="gray3">class="gray3"</li>
-          <li class="gray4">class="gray4"</li>
-        </ul>
-      </div>
-      <div class="centered" style="margin-top:2em">
-        I am centered text with a <button>Button</button> and <button disabled>Disabled</button> button.
-      </div>
+	  <span><img src="images/octocat.png" class="reflect" ></span>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Roadmap</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Performance improvements (Java, PDE)</li>
+		<li>Graduation of the Maven connector</li>
+		<li>Improvement of the link resolution</li>
+		<li>New connectors</li>
+      </ul>
     </article>
   </slide>
 
   <slide class="segue dark nobackground">
-    <aside class="gdbar"><img src="images/product_logo_128.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Segue Slide</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>Traceability</h2>
+      <h3>From Ariadne back to your IDE</h3>
     </hgroup>
   </slide>
-
-  <slide class="fill nobackground" style="background-image: url(images/sky.jpg)">
+  
+  <slide class="fill nobackground" style="background-image: url(images/traceability.png)">
     <hgroup>
-      <h2 class="white">Full Image (with Optional Header)</h2>
+      <h2 class="white"></h2>
     </hgroup>
-    <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
+    <footer class="source white"></footer>
   </slide>
 
-  <slide class="segue dark quote nobackground">
-    <aside class="gdbar right bottom"><img src="images/product_logo_128.png"></aside>
-    <article class="flexbox vleft auto-fadein">
-      <q>
-        This is an example of quote text.
-      </q>
-      <div class="author">
-        Name<br>
-        Company
-      </div>
+  <slide class="logoslide darkbackground nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/product_logo_wide_white.png"></span>
     </article>
   </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Iframe</h2>
-    </hgroup>
-    <article>
-      <iframe data-src="http://www.google.com/doodle4google/history.html"></iframe>
-    </article>
-  </slide>
-
-  <slide>
-    <article>
-      <iframe data-src="http://www.google.com/doodle4google/history.html"></iframe>
-    </article>
-  </slide>
-
+  
   <slide class="thank-you-slide segue nobackground">
     <aside class="gdbar right"><img src="images/product_logo_128.png"></aside>
     <article class="flexbox vleft auto-fadein">
@@ -381,12 +438,6 @@ URL: https://code.google.com/p/io-2012-slides
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
     </p>
-  </slide>
-
-  <slide class="logoslide darkbackground nobackground">
-    <article class="flexbox vcenter">
-      <span><img src="images/product_logo_wide_white.png"></span>
-    </article>
   </slide>
 
   <slide class="backdrop"></slide>
